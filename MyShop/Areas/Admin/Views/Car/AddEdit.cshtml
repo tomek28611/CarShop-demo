@@ -1,0 +1,59 @@
+﻿@model MyShop.Models.Car
+@{
+    string action = "";
+    if (Model.Id > 0)
+    {
+        action = "Edit";
+        ViewBag.Title = "Admin Car Edit";
+    }
+    else
+    {
+        action = "Add";
+        ViewBag.Title = "Admin Car Add";
+    }
+
+}
+
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<h1>Admin @(action) Car</h1>
+<div asp-validation-summary="All"></div>
+<form asp-controller="Car" asp-action="Add" method="post">
+    <div class="row">
+        <div class="form-floating mb-3 col">
+            <input asp-for=Brand class="form-control" id="floatingBrand" placeholder="Brand">
+            <label asp-for=Brand for="floatingBrand">Brand</label>
+        </div>
+        <div class="form-floating mb-3 col">
+            <input asp-for=Model class="form-control" id="floatingModel" placeholder="Model">
+            <label asp-for=Model for="floatingBrand">Model</label>
+        </div>
+        <div class="form-floating mb-3 col">
+            <input asp-for=Year class="form-control" id="floatingYear" placeholder="Year">
+            <label asp-for=Year for="floatingBrand">Year</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="mb-3 col">
+            <select class="form-select form-select-lg" asp-for="Type">
+                <option value="" selected>Please select a Type</option>
+                <option value="Sedan">Sedan</option>
+                <option value="SUV">SUV</option>
+                <option value="Combi">Combi</option>
+                <option value="Bus">Bus</option>
+            </select>
+        </div>
+        <div class="form-floating mb-3 col">
+            <input asp-for=Price class="form-control" id="floatingYear" placeholder="Price">
+            <label asp-for=Price for="floatingBrand">Price</label>
+        </div>
+        <div class="form-floating mb-3 col">
+            <input asp-for=Color class="form-control" id="floatingYear" placeholder="Color">
+            <label asp-for=Color for="floatingBrand">Color</label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
